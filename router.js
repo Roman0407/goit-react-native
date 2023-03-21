@@ -6,7 +6,6 @@ import { RegistrationScreen } from "./screens/auth/RegistrationScreen";
 import { LoginScreen } from "./screens/auth/LoginScreen";
 import { Home } from "./screens/main/Home";
 
-
 const AuthStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
 
