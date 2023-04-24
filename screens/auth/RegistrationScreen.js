@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import uuid from "react-native-uuid";
 import { Ionicons } from "@expo/vector-icons";
-
 import {
   TouchableWithoutFeedback,
   ImageBackground,
@@ -21,8 +20,6 @@ import {
   Alert,
 } from "react-native";
 import { authRegistration } from "../../redux/auth/authOperations";
-
-
 
 export const RegistrationScreen = ({ navigation }) => {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
@@ -60,8 +57,7 @@ export const RegistrationScreen = ({ navigation }) => {
   const handleLogin = (value) => setLogin(value);
   const handleEmail = (value) => setEmail(value.trim());
   const handlePassword = (value) => setPassword(value.trim());
-
-  //-----Avatar______
+ 
   const pickImage = async () => {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -79,14 +75,15 @@ export const RegistrationScreen = ({ navigation }) => {
       const errorMessage = error.message;
       console.log("err", error.message);
     }
+    
   };
-
-
+  
   const storage = getStorage();
   const uploadPhotoToServer = async () => {
     let AvtUrl = avatar;
     if (!avatar) {
       AvtUrl = assets[0].localUri;
+     
     }
 
     const response = await fetch(AvtUrl);
@@ -94,6 +91,7 @@ export const RegistrationScreen = ({ navigation }) => {
     const uniquePostId = uuid.v4();
     const storageRef = ref(storage, `avatar/${uniquePostId}`);
     const data = await uploadBytes(storageRef, file);
+
     const urlAvatar = await getDownloadURL(
       ref(storage, `avatar/${uniquePostId}`)
     );

@@ -40,7 +40,6 @@ import {
 
 import uuid from "react-native-uuid";
 import { AntDesign } from "@expo/vector-icons";
-
 export const ProfileScreen = ({ navigation }) => {
   const { userId, login, avatar, email } = useSelector((state) => state.auth);
   const [loader, setLoader] = useState(false);
@@ -92,15 +91,15 @@ export const ProfileScreen = ({ navigation }) => {
       console.log("err", error.message);
     }
   };
-
+ 
   const dispatch = useDispatch();
  
   const signOut = () => {
     dispatch(authSignOutUser());
   };
- 
+
   const pickImage = async () => {
-  
+    
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -116,7 +115,7 @@ export const ProfileScreen = ({ navigation }) => {
   
   async function blobFromURL(url) {
     const blob = await fetch(url).then((r) => r.blob());
-    
+   
     return blob;
   }
 
@@ -127,10 +126,10 @@ export const ProfileScreen = ({ navigation }) => {
 
     if (!newAvatar) {
       AvtUrl = assets[0].localUri;
-      
+     
     }
     const blob = await blobFromURL(AvtUrl);
- 
+    
 
     const uniquePostId = uuid.v4();
 
@@ -149,7 +148,7 @@ export const ProfileScreen = ({ navigation }) => {
     try {
       const avatarPhoto = await uploadPhotoToServer();
 
-      dispatch(authChangeUserAvatar({ avatarPhoto })); //!!!!!
+      dispatch(authChangeUserAvatar({ avatarPhoto })); 
 
       Alert.alert("Your avatar has been added");
       setNewAvatar(null);
@@ -157,7 +156,7 @@ export const ProfileScreen = ({ navigation }) => {
       console.log("error in Handle", error.message);
     }
   };
-
+ 
   return (
     <View style={styles.containerMain}>
       <ImageBackground

@@ -22,10 +22,10 @@ import {
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
+
 export const DefaultScreenPosts = ({ route, navigation }) => {
   const [posts, setPosts] = useState([]);
   const [loader, setLoader] = useState(false);
- 
   const { userId, login, avatar, email } = useSelector((state) => state.auth);
 
   const getAllPost = async () => {
@@ -52,7 +52,6 @@ export const DefaultScreenPosts = ({ route, navigation }) => {
       unsubscribe();
     };
   };
-
 
   useEffect(() => {
     getAllPost();

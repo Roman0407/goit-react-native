@@ -38,7 +38,7 @@ export const CommentsScreen = ({ route }) => {
     getAllComments();
   }, []);
 
- 
+  
   const addComment = async () => {
     try {
       const date = new Date().toLocaleString();
@@ -98,10 +98,11 @@ export const CommentsScreen = ({ route }) => {
     Keyboard.dismiss();
   };
 
+  
   return (
     <View style={styles.container}>
       <View>
-        {}
+        {/* style={styles.postsContainer} */}
         <TouchableWithoutFeedback onPress={keyboardHide}>
           <View>
             <Image
@@ -212,7 +213,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
     paddingTop: 32,
   },
- 
+
   commentArrea: { flexDirection: "row" },
   commentArreaReverse: { flexDirection: "row-reverse" },
   commentLogin: {

@@ -16,7 +16,6 @@ import {
 
 import { authLogIn } from "../../redux/auth/authOperations";
 
-
 export const LoginScreen = ({ navigation }) => {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [email, setEmail] = useState("");
@@ -46,7 +45,7 @@ export const LoginScreen = ({ navigation }) => {
           style={styles.imageBG}
           source={require("../../assets/images/photo-BG.jpg")}
         >
-          <KeyboardAvoidingView
+          <KeyboardAvoidingView 
             behavior={Platform.OS == "ios" ? "padding" : null} 
             style={styles.container}
           >
